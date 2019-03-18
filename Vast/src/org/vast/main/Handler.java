@@ -19,9 +19,8 @@ public class Handler {
 	}
 	
 	public void render(Graphics g) {
-		Graphics2D g2d = (Graphics2D) g;
 		for (GameObject o : objects) {
-			o.render(g2d);
+			o.render(g);
 		}
 	}
 }

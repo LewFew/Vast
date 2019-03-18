@@ -8,12 +8,14 @@ import java.awt.image.BufferStrategy;
 import javax.swing.JFrame;
 
 import org.vast.entities.Player;
+import org.vast.voxels.VoxDice;
 
 public class Main implements Runnable{
 	
 	private boolean running = false;
 	private Window frame;
 	private Handler handler;
+	private Camera camera;
 	
 	public static final int WIDTH = 640, HEIGHT = 360;
 	
@@ -24,12 +26,17 @@ public class Main implements Runnable{
 		frame.setSize(WIDTH, HEIGHT);
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setResizable(false);
 		frame.setVisible(true);
 		
 		frame.addKeyListener(new KeyInput());
 		
 		handler = new Handler();
 		
+		camera = new Camera(new Vector3D(0, 0, 0));
+		
+		handler.objects.add(camera);
+		handler.objects.add(new VoxDice(new Vector3D(300, 300, 200)));
 		handler.objects.add(new Player(new Vector3D(100, 100, 100)));
 		
 		this.run();
@@ -40,6 +47,7 @@ public class Main implements Runnable{
 	}
 	
 	public void update() {
+		//System.out.println(Shared.STATE);
 		handler.update();
 	}
 	
