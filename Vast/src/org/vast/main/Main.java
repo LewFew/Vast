@@ -68,6 +68,9 @@ public class Main implements Runnable{
 		//Clear
 		g.fillRect(0, 0, WIDTH, HEIGHT);
 		
+		//g.setColor(Color.RED);
+		//g.fillRect(WIDTH / 2, HEIGHT / 2, 1, 1);
+		
 		handler.render(g);
 		
 		bs.show();

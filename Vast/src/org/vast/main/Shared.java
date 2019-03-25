@@ -9,7 +9,7 @@ import javax.imageio.ImageIO;
 
 public class Shared {
 
-	public static int STATE = 0; //Direction that player is facing 0 = up moving clockwise
+	public static int STATE = 0; //Direction that player is facing 0 = up moving counter-clockwise
 	public static Vector3D refFrame = new Vector3D(0, 0, 0); //Usually the position of the player or camera
 	
 	/*
@@ -57,7 +57,7 @@ public class Shared {
 	}
 	
 	public static Vector3D transformVector3DPosition(Vector3D original) {
-		return rotatePoint(refFrame, original, STATE * (Math.PI / 2));
+		return rotatePoint(refFrame, original, (STATE) * (Math.PI / 2));
 	}
 	
 }

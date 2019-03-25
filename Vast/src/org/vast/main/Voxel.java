@@ -25,20 +25,16 @@ public abstract class Voxel extends GameObject {
 		//quick test
 		switch(Shared.STATE) {
 		case 0:
-			g.drawImage(Shared.getSprite(0, 0, 32, spriteSheet), Shared.round(drawPosition.getX())
-					, Shared.round(drawPosition.getY()), null);
+			drawImage = Shared.getSprite(0, 0, 32, spriteSheet);
 			break;
 		case 1:
-			g.drawImage(Shared.getSprite(32, 0, 32, spriteSheet), Shared.round(drawPosition.getX())
-					, Shared.round(drawPosition.getY()), null);
+			drawImage = Shared.getSprite(0, 0, 32, spriteSheet);
 			break;
 		case 2:
-			g.drawImage(Shared.getSprite(64, 0, 32, spriteSheet), Shared.round(drawPosition.getX())
-					, Shared.round(drawPosition.getY()), null);
+			drawImage = Shared.getSprite(0, 0, 32, spriteSheet);
 			break;
 		case 3:
-			g.drawImage(Shared.getSprite(96, 0, 32, spriteSheet), Shared.round(drawPosition.getX())
-					, Shared.round(drawPosition.getY()), null);
+			drawImage = Shared.getSprite(0, 0, 32, spriteSheet);
 			break;
 		}
 	}

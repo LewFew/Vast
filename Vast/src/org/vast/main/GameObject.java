@@ -2,6 +2,7 @@ package org.vast.main;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.Rectangle;
 import java.util.ArrayList;
 
@@ -17,6 +18,9 @@ public abstract class GameObject {
 	protected boolean isTangible = true;
 	protected int mass;
 	protected int orientation; //direction the object is facing
+	protected Image drawImage;
+	protected int effWidth, effHeight;
+	protected boolean visible = true;
 	
 	protected boolean destroyed = false;
 	
@@ -43,12 +47,23 @@ public abstract class GameObject {
 		engines.add(engine);
 	}
 	
+	public void commonDraw(Graphics g) {
+		if (visible && drawImage != null) {
+			g.drawImage(drawImage, Shared.round(drawPosition.getX()), Shared.round(drawPosition.getY()), null);
+		}
+	}
+	
 	public void common() {
 		//Set new draw position, etc.
 		
+		if (drawImage != null) {
+			effWidth = drawImage.getWidth(null);
+			effHeight = drawImage.getHeight(null);
+		}
+		
 		drawPosition = Shared.transformVector3DPosition(position);
-		drawPosition.setX(drawPosition.getX() + Main.WIDTH / 2.5);
-		drawPosition.setY(drawPosition.getY() + Main.HEIGHT / 2.5);
+		drawPosition.setX(drawPosition.getX() + Main.WIDTH / 2 - (effWidth / 2));
+		drawPosition.setY(drawPosition.getY() + Main.HEIGHT / 2 - (effHeight / 2));
 		
 		//Physics
 		if (isTangible) {
