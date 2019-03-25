@@ -17,7 +17,7 @@ public class Player extends Entity {
 
 	public Player(Vector3D position) {
 		super(position);
-		//addEngine(new LRUDMoveEngine());
+		addEngine(new LRUDMoveEngine());
 		effWidth = 100;
 		effHeight = 100;
 	}
@@ -41,13 +41,13 @@ public class Player extends Entity {
 			Shared.STATE = 0;
 		}
 		if (KeyInput.isKeyDown(KeyEvent.VK_A)) {
-			Shared.STATE = 1;
+			Shared.STATE = 3;
 		}
 		if (KeyInput.isKeyDown(KeyEvent.VK_S)) {
 			Shared.STATE = 2;
 		}
 		if (KeyInput.isKeyDown(KeyEvent.VK_D)) {
-			Shared.STATE = 3;
+			Shared.STATE = 1;
 		}
 		
 		System.out.println("X: " + drawPosition.getX() + " Y: " + drawPosition.getY() + " STATE: " + Shared.STATE);

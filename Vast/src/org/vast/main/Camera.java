@@ -5,11 +5,14 @@ import java.awt.Graphics2D;
 
 import org.vast.engines.LRUDMoveEngine;
 
-public class Camera extends GameObject{
-
-	public Camera(Vector3D position) {
+public class Camera extends GameObject { 
+	
+	private GameObject tracking;
+	
+	public Camera(Vector3D position, GameObject tracking) {
 		super(position);
-		addEngine(new LRUDMoveEngine());
+		//addEngine(new LRUDMoveEngine());
+		this.tracking = tracking;
 	}
 
 	@Override
@@ -26,7 +29,9 @@ public class Camera extends GameObject{
 
 	@Override
 	public void update() {
-		Shared.refFrame = new Vector3D(position.getX() - Main.WIDTH / 2.5, position.getY() - Main.HEIGHT / 2.5, position.getZ());
+		Shared.refFrame = new Vector3D(position.getX() - Main.WIDTH / 2, position.getY() - Main.HEIGHT / 2, position.getZ());
+		velocity = new Vector3D((tracking.getPosition().getX() - (position.getX() - Main.WIDTH / 2)) / 5,
+				(tracking.getPosition().getY() - (position.getY() - Main.HEIGHT / 4.5)) / 5, 0);
 	}
 
 	@Override

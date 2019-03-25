@@ -33,11 +33,13 @@ public class Main implements Runnable{
 		
 		handler = new Handler();
 		
-		camera = new Camera(new Vector3D(0, 0, 0));
+		Player player = new Player(new Vector3D(100, 100, 100));
+		
+		camera = new Camera(new Vector3D(0, 0, 0), player);
 		
 		handler.objects.add(camera);
 		handler.objects.add(new VoxDice(new Vector3D(300, 300, 200)));
-		handler.objects.add(new Player(new Vector3D(100, 100, 100)));
+		handler.objects.add(player);
 		
 		this.run();
 	}

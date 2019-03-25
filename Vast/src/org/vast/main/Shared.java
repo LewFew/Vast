@@ -9,7 +9,7 @@ import javax.imageio.ImageIO;
 
 public class Shared {
 
-	public static int STATE = 0; //Direction that player is facing 0 = up moving counter-clockwise
+	public static int STATE = 0; //Direction that player is facing 0 = up moving clockwise
 	public static Vector3D refFrame = new Vector3D(0, 0, 0); //Usually the position of the player or camera
 	
 	/*
@@ -31,8 +31,8 @@ public class Shared {
         return sprite;
     }
 
-    public static BufferedImage getSprite(int xGrid, int yGrid, int tileSize, BufferedImage img) {
-        return img.getSubimage(xGrid, yGrid, tileSize, tileSize);
+    public static BufferedImage getSprite(int xGrid, int yGrid, int tileSizeWidth, int tileSizeHeight, BufferedImage img) {
+        return img.getSubimage(xGrid, yGrid, tileSizeWidth, tileSizeHeight);
     }
 	
 	public static Vector3D rotatePoint(Vector3D origin, Vector3D point, double angle) {
@@ -57,7 +57,13 @@ public class Shared {
 	}
 	
 	public static Vector3D transformVector3DPosition(Vector3D original) {
-		return rotatePoint(refFrame, original, (STATE) * (Math.PI / 2));
+		Vector3D rP = rotatePoint(refFrame, original, (STATE) * (Math.PI / 2));
+		if (STATE == 1 || STATE == 3) {
+			rP.setX(-rP.getX());
+			rP.setY(-rP.getY());
+			rP.setZ(-rP.getZ());
+		}
+		return rP;
 	}
 	
 }

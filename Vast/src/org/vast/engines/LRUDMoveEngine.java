@@ -15,6 +15,7 @@ public class LRUDMoveEngine implements Engine {
 	@Override
 	public void engUpdate(GameObject parent) {	
 		Vector3D add;
+		
 		if (KeyInput.isKeyDown(KeyEvent.VK_LEFT)) {
 			add = Shared.transformVector3D(new Vector3D(-5, 0, 0));
 			parent.setPosition(parent.getPosition().add(add));

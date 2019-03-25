@@ -61,7 +61,7 @@ public abstract class GameObject {
 			effHeight = drawImage.getHeight(null);
 		}
 		
-		drawPosition = Shared.transformVector3DPosition(position);
+		drawPosition = Shared.transformVector3DPosition(new Vector3D(position.getX(), position.getY() - position.getZ(), 0));
 		drawPosition.setX(drawPosition.getX() + Main.WIDTH / 2 - (effWidth / 2));
 		drawPosition.setY(drawPosition.getY() + Main.HEIGHT / 2 - (effHeight / 2));
 		
@@ -78,6 +78,10 @@ public abstract class GameObject {
 			
 			position.add(velocity);
 		}
+	}
+	
+	public Vector3D getDrawPosition() {
+		return drawPosition;
 	}
 	
 	public ArrayList<Engine> getEngines() {
