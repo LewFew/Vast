@@ -17,10 +17,14 @@ public abstract class GameObject {
 	protected Rectangle hitBox;
 	protected boolean isTangible = true;
 	protected int mass;
-	protected int orientation; //direction the object is facing
+	protected int orientation = 0; //direction the object is facing
 	protected Image drawImage;
 	protected int effWidth, effHeight;
 	protected boolean visible = true;
+	
+	protected int planarDepth;
+	
+	protected int relativeOrientation;
 	
 	protected boolean destroyed = false;
 	
@@ -56,6 +60,12 @@ public abstract class GameObject {
 	public void common() {
 		//Set new draw position, etc.
 		
+		relativeOrientation = Math.abs(Shared.STATE + orientation) % 4;
+		
+		if (Shared.STATE == 1 || Shared.STATE == 3) {
+			relativeOrientation = (relativeOrientation + 2) % 4;
+		}
+		
 		if (drawImage != null) {
 			effWidth = drawImage.getWidth(null);
 			effHeight = drawImage.getHeight(null);
@@ -90,6 +100,14 @@ public abstract class GameObject {
 	
 	public Vector3D getPosition() {
 		return position;
+	}
+	
+	public void setOrientation(int orientation) {
+		this.orientation = orientation;
+	}
+	
+	public int getOrientation() {
+		return orientation;
 	}
 	
 	public void setPosition(Vector3D position) {

@@ -20,6 +20,7 @@ public class Animation {
 		this.spriteSheet = spriteSheet;
 		this.tileWidth = tileWidth;
 		this.tileHeight = tileHeight;
+		this.delay = delay;
 		
 		maxFrames = (spriteSheet.getWidth() / tileWidth) * delay;
 	}

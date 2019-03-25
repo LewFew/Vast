@@ -1,6 +1,9 @@
 package org.vast.engines;
 
-public abstract class MoveEngine {
-	protected double maxSpeed;
-	protected double speedDerivative;
+import org.vast.main.Engine;
+
+public abstract class MoveEngine implements Engine{
+	public double maxSpeed;
+	public double speedDerivative;
+	public boolean walking;
 }

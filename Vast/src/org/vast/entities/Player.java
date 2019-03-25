@@ -4,28 +4,52 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
 
 import org.vast.engines.LRUDMoveEngine;
+import org.vast.engines.MoveEngine;
+import org.vast.engines.WASDMoveEngine;
+import org.vast.engines.WASDPerspectiveEngine;
+import org.vast.main.Animation;
+import org.vast.main.Engine;
 import org.vast.main.Entity;
 import org.vast.main.GameObject;
 import org.vast.main.KeyInput;
 import org.vast.main.Main;
+import org.vast.main.Resources;
 import org.vast.main.Shared;
 import org.vast.main.Vector3D;
 
 public class Player extends Entity {
+	
+	private Animation walk[] = {new Animation(Resources.sprites.get("walkFor"), 32, 54, 5),
+			new Animation(Resources.sprites.get("walkRight"), 32, 54, 5),
+			new Animation(Resources.sprites.get("walkBack"), 32, 54, 5),
+			new Animation(Resources.sprites.get("walkLeft"), 32, 54, 5)};
+	private BufferedImage stand[] = {Resources.sprites.get("standFor"),
+			Resources.sprites.get("standRight"),
+			Resources.sprites.get("standBack"),
+			Resources.sprites.get("standLeft")};
+	
+	private Animation currentAnimation;
+	private MoveEngine move = new WASDMoveEngine();
 
 	public Player(Vector3D position) {
 		super(position);
-		addEngine(new LRUDMoveEngine());
-		effWidth = 100;
-		effHeight = 100;
+		addEngine(move);
+		addEngine(new WASDPerspectiveEngine());
+		effWidth = 32;
+		effHeight = 54;
 	}
 
 	@Override
 	public void render(Graphics g) {
-		g.setColor(Color.BLUE);
-		g.fillRect(Shared.round(drawPosition.getX()), Shared.round(drawPosition.getY()), 100, 100);
+		if (move.walking) {
+			walk[relativeOrientation].update();
+			drawImage = walk[relativeOrientation].getImage();
+		} else {
+			drawImage = stand[relativeOrientation];
+		}
 	}
 
 	@Override
@@ -36,22 +60,7 @@ public class Player extends Entity {
 
 	@Override
 	public void update() {
-		//Shared.refFrame = new Vector3D(position.getX() - Main.WIDTH / 2.5, position.getY() - Main.HEIGHT / 2.5, position.getZ());
-		if (KeyInput.isKeyDown(KeyEvent.VK_W)) {
-			Shared.STATE = 0;
-		}
-		if (KeyInput.isKeyDown(KeyEvent.VK_A)) {
-			Shared.STATE = 3;
-		}
-		if (KeyInput.isKeyDown(KeyEvent.VK_S)) {
-			Shared.STATE = 2;
-		}
-		if (KeyInput.isKeyDown(KeyEvent.VK_D)) {
-			Shared.STATE = 1;
-		}
-		
-		System.out.println("X: " + drawPosition.getX() + " Y: " + drawPosition.getY() + " STATE: " + Shared.STATE);
-		System.out.println("RX: " + position.getX() + " RY: " + position.getY());
+		System.out.println(relativeOrientation);
 	}
 
 	@Override

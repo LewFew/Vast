@@ -1,8 +1,10 @@
 package org.vast.voxels;
 
 import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
 
 import org.vast.main.GameObject;
+import org.vast.main.Resources;
 import org.vast.main.Shared;
 import org.vast.main.Vector3D;
 import org.vast.main.Voxel;
@@ -34,7 +36,7 @@ public class VoxDice extends Voxel{
 
 	@Override
 	public void initializeImage() {
-		spriteSheet = Shared.loadSprite("resources/sprites/dice.png");
+		spriteSheet = Resources.sprites.get("dice");
 	}
 
 }

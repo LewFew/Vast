@@ -30,7 +30,7 @@ public abstract class Voxel extends GameObject {
 		drawImage = Shared.getSprite(0, 0, 32, 32, spriteSheet);
 		
 		//Draws bottom piece
-		switch(Shared.STATE) {
+		switch((Shared.STATE + orientation) % 4) {
 		case 0:
 			g.drawImage(Shared.getSprite(32, 0, 32, 32, spriteSheet),
 					Shared.round(drawPosition.getX()),

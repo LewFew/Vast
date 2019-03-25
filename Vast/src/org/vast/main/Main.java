@@ -4,6 +4,10 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 
 import javax.swing.JFrame;
 
@@ -33,12 +37,30 @@ public class Main implements Runnable{
 		
 		handler = new Handler();
 		
+		try {
+			BufferedReader br = new BufferedReader(new FileReader(Resources.getPath("resources/sprites/sprites.txt")));
+			String line;
+			String[] read;
+			while ((line = br.readLine()) != null) {
+				read = line.split(" ## ");
+				Resources.sprites.put(read[0], Shared.loadSprite(read[1]));
+			}
+			
+			br.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+			System.exit(1);
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.exit(1);
+		}
+		
 		Player player = new Player(new Vector3D(100, 100, 100));
 		
 		camera = new Camera(new Vector3D(0, 0, 0), player);
 		
 		handler.objects.add(camera);
-		handler.objects.add(new VoxDice(new Vector3D(300, 300, 200)));
+		handler.objects.add(new VoxDice(new Vector3D(300, 300, 100)));
 		handler.objects.add(player);
 		
 		this.run();
