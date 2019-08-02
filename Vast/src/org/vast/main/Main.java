@@ -13,6 +13,8 @@ import javax.swing.JFrame;
 
 import org.vast.entities.Player;
 import org.vast.voxels.VoxDice;
+import org.vast.voxels.VoxGrass;
+import org.vast.voxels.VoxTest;
 
 public class Main implements Runnable{
 	
@@ -61,6 +63,20 @@ public class Main implements Runnable{
 		
 		handler.objects.add(camera);
 		handler.objects.add(new VoxDice(new Vector3D(300, 300, 100)));
+		handler.objects.add(new VoxTest(new Vector3D(500, 300, 100)));
+		
+		for (int i = 0; i < 4; i++) {
+			for (int j = 0; j < 10; j++) {
+				handler.objects.add(new VoxGrass(new Vector3D(600 + i * 32, 300 + j * 32, 50)));
+			}
+		}
+		
+		for (int i = 0; i < 4; i++) {
+			for (int j = 0; j < 10; j++) {
+				handler.objects.add(new VoxGrass(new Vector3D(600 + i * 32, 300 + j * 32, 82)));
+			}
+		}
+		
 		handler.objects.add(player);
 		
 		this.run();
@@ -105,6 +121,7 @@ public class Main implements Runnable{
 		while (running) {
 			long currentTime = System.nanoTime();
 			if (currentTime - lastTime >= (1000000000/60)) {
+				System.out.println(1000000000/(currentTime - lastTime) + " FPS");
 				lastTime = currentTime;
 				update();
 				render();

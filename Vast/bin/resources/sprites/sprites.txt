@@ -7,3 +7,4 @@ walkLeft ## resources/sprites/WalkLeft1.png
 walkRight ## resources/sprites/WalkRight1.png
 walkFor ## resources/sprites/WalkForwards1.png
 walkBack ## resources/sprites/WalkBack1.png
+grass ## resources/sprites/grass.png

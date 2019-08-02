@@ -21,6 +21,7 @@ public abstract class GameObject {
 	protected Image drawImage;
 	protected int effWidth, effHeight;
 	protected boolean visible = true;
+	protected double zHeight;
 	
 	protected int planarDepth;
 	
@@ -71,9 +72,9 @@ public abstract class GameObject {
 			effHeight = drawImage.getHeight(null);
 		}
 		
-		drawPosition = Shared.transformVector3DPosition(new Vector3D(position.getX(), position.getY() - position.getZ(), 0));
+		drawPosition = Shared.transformVector3DPosition(new Vector3D(position.getX(), position.getY(), 0));
 		drawPosition.setX(drawPosition.getX() + Main.WIDTH / 2 - (effWidth / 2));
-		drawPosition.setY(drawPosition.getY() + Main.HEIGHT / 2 - (effHeight / 2));
+		drawPosition.setY(drawPosition.getY() + Main.HEIGHT / 2 - (effHeight / 2) - (position.getZ() * Shared.scaleFactor));
 		
 		//Physics
 		if (isTangible) {

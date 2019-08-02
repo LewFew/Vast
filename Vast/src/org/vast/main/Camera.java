@@ -29,9 +29,23 @@ public class Camera extends GameObject {
 
 	@Override
 	public void update() {
-		Shared.refFrame = new Vector3D(position.getX() - Main.WIDTH / 2, position.getY() - Main.HEIGHT / 2, position.getZ());
+		switch (Shared.STATE) {
+			case 0:
+				Shared.refFrame = new Vector3D(position.getX() - Main.WIDTH / 2, (position.getY() - (Main.HEIGHT / 2) / 2.2) - (position.getZ() * Shared.scaleFactor), position.getZ());
+				break;
+			case 1:
+				Shared.refFrame = new Vector3D(position.getX() - Main.WIDTH / 2 + (position.getZ() * Shared.scaleFactor), (position.getY() - (Main.HEIGHT / 2) / 2.2), position.getZ());
+				break;
+			case 2:
+				Shared.refFrame = new Vector3D(position.getX() - Main.WIDTH / 2, (position.getY() - (Main.HEIGHT / 2) / 2.2) + (position.getZ() * Shared.scaleFactor), position.getZ());
+				break;
+			case 3:
+				Shared.refFrame = new Vector3D(position.getX() - Main.WIDTH / 2 - (position.getZ() * Shared.scaleFactor), (position.getY() - (Main.HEIGHT / 2) / 2.2), position.getZ());
+				break;
+		}
 		velocity = new Vector3D((tracking.getPosition().getX() - (position.getX() - Main.WIDTH / 2)) / 5,
-				(tracking.getPosition().getY() - (position.getY() - Main.HEIGHT / 4.5)) / 5, 0);
+				(tracking.getPosition().getY() - (position.getY() - Main.HEIGHT / 4.5)) / 5, 
+				(tracking.getPosition().getZ() - (position.getZ())) / 5);
 	}
 
 	@Override

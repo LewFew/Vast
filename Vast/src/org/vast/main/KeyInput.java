@@ -43,7 +43,7 @@ public class KeyInput implements KeyListener {
 		isReleased.add(e.getKeyCode());
 	}
 	
-	public void clear() {
+	public static void clear() {
 		isReleased.clear();
 		isPressed.clear();
 	}

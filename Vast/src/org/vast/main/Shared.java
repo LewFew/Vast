@@ -11,6 +11,7 @@ public class Shared {
 
 	public static int STATE = 0; //Direction that player is facing 0 = up moving clockwise
 	public static Vector3D refFrame = new Vector3D(0, 0, 0); //Usually the position of the player or camera
+	public static double scaleFactor = 0.7;
 	
 	/*
 	 * The reason for the static shannegins is so these values are "read-only"
@@ -61,7 +62,7 @@ public class Shared {
 		if (STATE == 1 || STATE == 3) {
 			rP.setX(-rP.getX());
 			rP.setY(-rP.getY());
-			rP.setZ(-rP.getZ());
+			//rP.setZ(-rP.getZ());
 		}
 		return rP;
 	}

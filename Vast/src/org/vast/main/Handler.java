@@ -21,6 +21,7 @@ public class Handler {
 			}
 			o.update();
 		}
+		KeyInput.clear();
 	}
 	
 	public void render(Graphics g) {

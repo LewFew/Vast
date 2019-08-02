@@ -34,22 +34,26 @@ public abstract class Voxel extends GameObject {
 		case 0:
 			g.drawImage(Shared.getSprite(32, 0, 32, 32, spriteSheet),
 					Shared.round(drawPosition.getX()),
-					Shared.round(drawPosition.getY() + effHeight), null);	
+					Shared.round(drawPosition.getY() + effHeight),
+					effWidth, Shared.round(effHeight * Shared.scaleFactor), null);	
 			break;
 		case 1:
 			g.drawImage(Shared.getSprite(64, 0, 32, 32, spriteSheet),
 					Shared.round(drawPosition.getX()),
-					Shared.round(drawPosition.getY() + effHeight), null);	
+					Shared.round(drawPosition.getY() + effHeight),
+					effWidth, Shared.round(effHeight * Shared.scaleFactor), null);	
 			break;
 		case 2:
 			g.drawImage(Shared.getSprite(96, 0, 32, 32, spriteSheet),
 					Shared.round(drawPosition.getX()),
-					Shared.round(drawPosition.getY() + effHeight), null);	
+					Shared.round(drawPosition.getY() + effHeight),
+					effWidth, Shared.round(effHeight * Shared.scaleFactor), null);	
 			break;
 		case 3:
 			g.drawImage(Shared.getSprite(128, 0, 32, 32, spriteSheet),
 					Shared.round(drawPosition.getX()),
-					Shared.round(drawPosition.getY() + effHeight), null);	
+					Shared.round(drawPosition.getY() + effHeight),
+					effWidth, Shared.round(effHeight * Shared.scaleFactor), null);	
 			break;
 		}
 		
@@ -57,7 +61,7 @@ public abstract class Voxel extends GameObject {
 		
 		g.setColor(new Color(0, 0, 0, 80));
 		g.fillRect(Shared.round(drawPosition.getX()),
-					Shared.round(drawPosition.getY() + effHeight), effWidth, effHeight);
+					Shared.round(drawPosition.getY() + effHeight), effWidth, Shared.round(effHeight * Shared.scaleFactor));
 	}
 
 }
