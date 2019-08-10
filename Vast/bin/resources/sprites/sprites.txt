@@ -1,0 +1,10 @@
+grass ## resources/sprites/dice.png
+standLeft ## resources/sprites/StandLeft.png
+standRight ## resources/sprites/StandRight.png
+standFor ## resources/sprites/StandFor.png
+standBack ## resources/sprites/StandBack.png
+walkLeft ## resources/sprites/WalkLeft1.png
+walkRight ## resources/sprites/WalkRight1.png
+walkFor ## resources/sprites/WalkForwards1.png
+walkBack ## resources/sprites/WalkBack1.png
+dice ## resources/sprites/dice.png
