@@ -15,5 +15,4 @@ public class Resources {
 	public static File getFile(String relative) {
 		return new File(Resources.class.getClassLoader().getResource(relative).getFile());
 	}
-	
 }

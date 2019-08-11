@@ -13,7 +13,7 @@ public class VoxGrass extends Voxel {
 
 	@Override
 	public void initializeImage() {
-		spriteSheet = Resources.sprites.get("grass");
+		spriteSheet = Resources.sprites.get("dice");
 	}
 
 	@Override

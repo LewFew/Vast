@@ -39,6 +39,7 @@ public class Main implements Runnable{
 		frame.addKeyListener(new KeyInput());
 		
 		handler = new Handler();
+
 		Shared shared = new Shared();
 		try {
 			BufferedReader br = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/resources/sprites/sprites.txt")));
@@ -47,7 +48,7 @@ public class Main implements Runnable{
 			while ((line = br.readLine()) != null) {
 				read = line.split(" ## ");
 				Resources.sprites.put(read[0], shared.loadSprite(read[1]));
-				System.out.println(read[0] + " " + Resources.sprites.get(read[0]).getHeight());
+				//System.out.println(read[0] + " " + Resources.sprites.get(read[0]).getHeight());
 			}
 			
 			br.close();

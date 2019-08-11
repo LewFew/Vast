@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
@@ -16,7 +17,7 @@ public class Shared {
 	public static double scaleFactor = 0.7;
 	
 	public static int levelGrid[][][];
-	
+
 	/*
 	 * The reason for the static shannegins is so these values are "read-only"
 	 * to some classes, but writable to others. Specifically, those who have an

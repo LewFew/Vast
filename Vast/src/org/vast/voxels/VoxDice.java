@@ -15,7 +15,7 @@ public class VoxDice extends Voxel {
 		super(position);
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	@Override
 	public void initializeImage() {
 		spriteSheet = Resources.sprites.get("dice");
@@ -38,5 +38,4 @@ public class VoxDice extends Voxel {
 		// TODO Auto-generated method stub
 		
 	}
-
 }
